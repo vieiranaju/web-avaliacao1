@@ -76,7 +76,7 @@ a:hover { text-decoration: underline; color: #cfcfcf; }
     color: #a5a5a5;
     padding: 20px;
     margin: 20px auto;
-    max-width: 800px;
+    max-width: 900px;
     border-radius: 10px;
     text-align: center;
 }
@@ -93,6 +93,17 @@ a:hover { text-decoration: underline; color: #cfcfcf; }
     height: auto;
     display: block;
     margin: 0 auto 15px auto;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+}
+
+.quest ul img,
+.quest ol img {
+    display: block;
+    margin: 10px auto; /* centraliza a imagem dentro do item */
+    width: 100%;
+    max-width: 500px; /* mesma largura das imagens normais */
+    height: auto;
     border-radius: 8px;
     box-shadow: 0 4px 8px rgba(0,0,0,0.2);
 }
