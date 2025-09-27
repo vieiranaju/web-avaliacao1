@@ -1,148 +1,338 @@
-img.telaCheia {
-    width: 700px;
-    height: auto;
-    max-width: 100%;
-    display: block;
-    margin: 20px auto;
-    border: 2px solid #000;
-    border-radius: 10px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+/* ===== Theme & reset ===== */
+:root {
+    --bg: #0b0f14;
+    --panel: #121922;
+    --panel-2: #0f141b;
+    --text: #c9d2dc;
+    --muted: #9aa7b4;
+    --accent: #d22020;
+    --accent-2: #e25353;
+    --success: #e20000;
+    --shadow: 0 10px 30px rgba(0,0,0,.35);
+    --radius: 14px;
+}
+
+* {
+    box-sizing: border-box;
+}
+
+html {
+    height: 100%;
+    scroll-behavior: smooth;
 }
 
 body {
-    font-family: Arial, sans-serif;
-    line-height: 1.6;
+    height: 100%;
+    font-family: "Inter", system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+    line-height: 1.7;
     margin: 0;
-    background-color: #1c1c1c; 
-    color: #a5a5a5;          
+    background:
+        radial-gradient(1200px 800px at 10% -10%, rgba(59,130,246,.08), transparent 40%),
+        radial-gradient(1000px 700px at 100% 0%, rgba(34,211,238,.06), transparent 45%),
+        var(--bg);
+    color: var(--text);
 }
 
+a {
+    color: var(--text);
+    text-decoration: none;
+}
+
+a:hover {
+    color: #fff;
+}
+
+.container {
+    width: min(1100px, 92%);
+    margin-inline: auto;
+}
+
+.content-flow > * {
+    margin-block: 1.1rem;
+}
+
+/* ===== Hero ===== */
 .hero {
     position: relative;
-    min-height: 65vh;
-    display: flex;
-    align-items: flex-start;
-    justify-content: center;
-    padding-top: 40px; 
+    min-height: 70vh;
+    display: grid;
+    place-items: start center;
+    padding: 32px 0 64px;
     background: url('../Figuras/header.jpg') center/cover no-repeat;
 }
-.hero::after { 
-    content: '';
+
+.hero::after {
+    content: "";
     position: absolute;
     inset: 0;
-    background: rgba(0, 0, 0, 0.45);
+    background: linear-gradient(
+        180deg,
+        rgba(5,8,13,.55),
+        rgba(5,8,13,.75) 60%,
+        var(--bg)
+    );
 }
 
-.navbar {
+.hero-content {
     position: relative;
-    z-index: 1; 
-    background: #ffffff;
-    color: #1c1c1c;
-    padding: 14px 24px;
-    border-radius: 40px;
+    z-index: 1;
+    text-align: center;
+    margin-top: 48px;
+}
+
+.hero-title {
+    font: 800 3rem/1.1 "Rajdhani", sans-serif;
+    letter-spacing: .5px;
+    margin: 0;
+}
+
+.hero-title span {
+    color: var(--accent-2);
+    text-shadow: 0 6px 30px rgba(34,211,238,.35);
+}
+
+.hero-subtitle {
+    color: var(--muted);
+    max-width: 60ch;
+    margin-inline: auto;
+}
+
+.hero-cta {
     display: flex;
+    gap: 12px;
+    justify-content: center;
+    flex-wrap: wrap;
+    margin-top: 18px;
+}
+
+.btn {
+    display: inline-flex;
     align-items: center;
     justify-content: center;
-    box-shadow: 0 10px 30px rgba(0,0,0,0.15);
-    gap: 20px;
+    padding: 12px 18px;
+    border-radius: 999px;
+    font-weight: 600;
+    border: 1px solid transparent;
+    transition: .2s ease;
+    cursor: pointer;
+    white-space: nowrap;
+    backdrop-filter: blur(4px);
 }
+
+.btn-primary {
+    background: linear-gradient(90deg, var(--accent) 0%, var(--accent-2) 100%);
+    color: #020617;
+}
+
+.btn-primary:hover {
+    filter: brightness(1.08);
+    transform: translateY(-1px);
+}
+
+.btn-ghost {
+    background: rgba(255,255,255,.06);
+    color: var(--text);
+    border-color: rgba(255,255,255,.12);
+}
+
+.btn-ghost:hover {
+    background: rgba(255,255,255,.12);
+}
+
+/* ===== Navbar (glass) ===== */
+.navbar {
+    position: relative;
+    z-index: 2;
+    align-self: start;
+    margin-top: 10px;
+    background: linear-gradient(180deg, rgba(255,255,255,.12), rgba(255,255,255,.08));
+    border: 1px solid rgba(255,255,255,.22);
+    color: #fff;
+    padding: 10px 20px;
+    border-radius: 999px;
+    display: flex;
+    justify-content: center;
+    gap: 18px;
+    box-shadow: var(--shadow);
+    backdrop-filter: blur(10px);
+}
+
 .nav-links {
     list-style: none;
     display: flex;
-    gap: 28px;
+    gap: 22px;
     margin: 0;
     padding: 0;
 }
+
 .nav-links a {
-    color: #1c1c1c;
-    text-decoration: none;
+    color: #fff;
     font-weight: 600;
-    font-size: 0.95rem;
+    letter-spacing: .2px;
+    opacity: .9;
 }
-.nav-links a:hover,
+
+.nav-links a:hover {
+    opacity: 1;
+}
+
 .nav-links a.active {
-    color: #555;
+    opacity: 1;
+    text-decoration: underline;
+    text-underline-offset: 6px;
 }
 
-main, h1, h2, p, table, img:not(.telaCheia) {
-    margin-left: 20px;
-    margin-right: 20px;
+/* ===== Headings & text ===== */
+h1,
+h2 {
+    font-family: "Rajdhani", sans-serif;
+    letter-spacing: .4px;
+    margin: .6rem 0;
 }
-a { color: inherit; }
-a:hover { text-decoration: underline; color: #cfcfcf; }
 
+h1 {
+    font-weight: 800;
+    font-size: clamp(2rem, 1.5rem + 2vw, 3rem);
+}
+
+h2 {
+    font-weight: 700;
+    font-size: clamp(1.25rem, 1rem + 1vw, 1.75rem);
+    color: #e5eef9;
+}
+
+p {
+    color: var(--text);
+}
+
+/* ===== Media & layout helpers ===== */
+img.telaCheia {
+    width: min(900px, 100%);
+    height: auto;
+    display: block;
+    margin: 18px auto;
+    border-radius: var(--radius);
+    border: 1px solid rgba(255,255,255,.08);
+    box-shadow: 0 12px 30px rgba(0,0,0,.45);
+}
+
+.container-imagens {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+    gap: 16px;
+    width: min(900px, 100%);
+    margin: 12px auto 24px;
+}
+
+.personagem-img {
+    width: 100%;
+    height: auto;
+    border-radius: 12px;
+    border: 1px solid rgba(255,255,255,.08);
+    box-shadow: 0 8px 20px rgba(0,0,0,.35);
+    background: #0b0f14;
+}
+
+/* ===== Cards / Quests ===== */
 .quest {
-    background-color: #222; /* fundo dark */
-    color: #a5a5a5;
-    padding: 20px;
-    margin: 20px auto;
-    max-width: 900px;
-    border-radius: 10px;
-    text-align: center;
+    background: linear-gradient(180deg, var(--panel), var(--panel-2));
+    color: var(--text);
+    padding: 24px;
+    margin: 24px auto;
+    width: min(900px, 100%);
+    border-radius: var(--radius);
+    box-shadow: var(--shadow);
+    border: 1px solid rgba(255,255,255,.06);
+}
+
+.quest h2 {
+    margin-top: 0;
 }
 
 .quest ul {
     text-align: left;
     margin: 10px auto;
-    max-width: 700px;
+    max-width: 720px;
 }
 
 .quest img {
-    width: 100%;
-    max-width: 500px;
+    width: min(520px, 100%);
     height: auto;
     display: block;
-    margin: 0 auto 15px auto;
-    border-radius: 8px;
-    box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+    margin: 0 auto 14px;
+    border-radius: 10px;
+    box-shadow: 0 8px 24px rgba(0,0,0,.4);
+    border: 1px solid rgba(255,255,255,.07);
 }
 
 .quest ul img,
 .quest ol img {
-    display: block;
-    margin: 10px auto; /* centraliza a imagem dentro do item */
-    width: 100%;
-    max-width: 500px; /* mesma largura das imagens normais */
-    height: auto;
-    border-radius: 8px;
-    box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+    margin: 10px auto;
+    width: min(520px, 100%);
 }
 
-
+/* ===== Table ===== */
 table {
-    width: 90%;
-    max-width: 800px;
-    margin: 30px auto;
+    width: min(900px, 100%);
+    margin: 26px auto;
     border-collapse: collapse;
-    font-family: Arial, sans-serif;
     text-align: center;
-    box-shadow: 0 4px 10px rgba(0,0,0,0.3);
-    border-radius: 5px; /* arredonda bordas da tabela */
-    overflow: hidden;    /* garante que as bordas arredondadas funcionem */
+    box-shadow: var(--shadow);
+    border-radius: 12px;
+    overflow: hidden;
+    background: var(--panel-2);
 }
 
-th, td {
-    padding: 12px 15px;
-    border: 1px solid #444;
+th,
+td {
+    padding: 14px 16px;
+    border: 1px solid rgba(255,255,255,.08);
 }
 
 th {
-    background-color: #333;
-    color: #fff;
-    font-size: 1rem;
+    background: linear-gradient(180deg, #19202a, #141b24);
+    color: #e8f0fb;
 }
 
 td {
-    background-color: #1c1c1c;
-    color: #a5a5a5;
-    font-size: 0.95rem;
+    background: rgba(255,255,255,.02);
+    color: var(--text);
 }
 
 tr:nth-child(even) td {
-    background-color: #2a2a2a;
+    background: rgba(255,255,255,.04);
 }
 
 tr:hover td {
-    background-color: #444;
+    background: rgba(59,130,246,.1);
     color: #fff;
+}
+
+/* ===== Footer ===== */
+.site-footer {
+    border-top: 1px solid rgba(255,255,255,.08);
+    margin-top: 56px;
+    padding: 22px 0;
+    background: rgba(0,0,0,.2);
+}
+
+.site-footer .container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--muted);
+    font-size: .95rem;
+}
+
+/* ===== Responsive tweaks ===== */
+@media (max-width: 700px) {
+    .navbar {
+        transform: scale(.95);
+    }
+    .hero-content {
+        margin-top: 28px;
+    }
+    .hero-title {
+        font-size: 2.2rem;
+    }
 }
