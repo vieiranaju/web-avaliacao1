@@ -1,0 +1,137 @@
+img.telaCheia {
+    width: 700px;
+    height: auto;
+    max-width: 100%;
+    display: block;
+    margin: 20px auto;
+    border: 2px solid #000;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+body {
+    font-family: Arial, sans-serif;
+    line-height: 1.6;
+    margin: 0;
+    background-color: #1c1c1c; 
+    color: #a5a5a5;          
+}
+
+.hero {
+    position: relative;
+    min-height: 65vh;
+    display: flex;
+    align-items: flex-start;
+    justify-content: center;
+    padding-top: 40px; 
+    background: url('../Figuras/header.jpg') center/cover no-repeat;
+}
+.hero::after { 
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.45);
+}
+
+.navbar {
+    position: relative;
+    z-index: 1; 
+    background: #ffffff;
+    color: #1c1c1c;
+    padding: 14px 24px;
+    border-radius: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.15);
+    gap: 20px;
+}
+.nav-links {
+    list-style: none;
+    display: flex;
+    gap: 28px;
+    margin: 0;
+    padding: 0;
+}
+.nav-links a {
+    color: #1c1c1c;
+    text-decoration: none;
+    font-weight: 600;
+    font-size: 0.95rem;
+}
+.nav-links a:hover,
+.nav-links a.active {
+    color: #555;
+}
+
+main, h1, h2, p, table, img:not(.telaCheia) {
+    margin-left: 20px;
+    margin-right: 20px;
+}
+a { color: inherit; }
+a:hover { text-decoration: underline; color: #cfcfcf; }
+
+.quest {
+    background-color: #222; /* fundo dark */
+    color: #a5a5a5;
+    padding: 20px;
+    margin: 20px auto;
+    max-width: 800px;
+    border-radius: 10px;
+    text-align: center;
+}
+
+.quest ul {
+    text-align: left;
+    margin: 10px auto;
+    max-width: 700px;
+}
+
+.quest img {
+    width: 100%;
+    max-width: 500px;
+    height: auto;
+    display: block;
+    margin: 0 auto 15px auto;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+}
+
+
+table {
+    width: 90%;
+    max-width: 800px;
+    margin: 30px auto;
+    border-collapse: collapse;
+    font-family: Arial, sans-serif;
+    text-align: center;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+    border-radius: 5px; /* arredonda bordas da tabela */
+    overflow: hidden;    /* garante que as bordas arredondadas funcionem */
+}
+
+th, td {
+    padding: 12px 15px;
+    border: 1px solid #444;
+}
+
+th {
+    background-color: #333;
+    color: #fff;
+    font-size: 1rem;
+}
+
+td {
+    background-color: #1c1c1c;
+    color: #a5a5a5;
+    font-size: 0.95rem;
+}
+
+tr:nth-child(even) td {
+    background-color: #2a2a2a;
+}
+
+tr:hover td {
+    background-color: #444;
+    color: #fff;
+}
